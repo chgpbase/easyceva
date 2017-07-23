@@ -1,0 +1,43 @@
+.platform-ios .manual-ios-statusbar-padding{
+    padding-top:20px;
+}
+.manual-remove-top-padding{
+    padding-top:0px;
+}
+.manual-remove-top-padding .scroll{
+    padding-top:0px !important;
+}
+ion-list.manual-list-fullwidth div.list, .list.card.manual-card-fullwidth {
+    margin-left:-10px;
+    margin-right:-10px;
+}
+ion-list.manual-list-fullwidth div.list > .item, .list.card.manual-card-fullwidth > .item {
+    border-radius:0px;
+    border-left:0px;
+    border-right: 0px;
+}
+#img-buy{
+    background: #ffffff url('../img/buy-beer2.jpg') no-repeat bottom center;
+}
+#img-order{
+    background: url('../img/beer2.jpg') bottom center;
+}
+
+#buy-button{
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    font-size: 25px;
+    text-align: center;
+    width: 80%;
+    height: 70px;
+}
+
+.valid{
+    background: #5FBA7D;
+}
+
+.used{
+    background: #F7B2B2;
+}

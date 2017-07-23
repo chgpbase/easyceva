@@ -1,0 +1,15 @@
+<ion-view title="Pedidos" id="page7" class=" ">
+    <ion-content padding="true" class="has-header" id="img-order">
+      <div ng-init="date = {day: getDatetime.getDate(), month: getDatetime.getMonth()+1, year: getDatetime.getFullYear()}"></div>
+        <ion-list id="orders-list3" class="">
+        	<h2 class="text-center">Tickets Válidos</h2>
+            <ion-item ng-repeat="order in orders | filter:{used:0}" ng-click="setDetails(order)">
+                <ion-icon class='icon-right ion-beer' is-active="false"> USAR TICKET</ion-icon>
+                <h3><b>Comprado em: </b> {{order.date}} &nbsp;&nbsp;
+                </h3>
+                <p><b>Número: </b> {{order.barcode}}</p>
+            </ion-item>
+        </ion-list>
+        <a ui-sref="tabsController.allOrders" id="orders-button2" class=" button button-positive  button-block ">Exibir todos pedidos</a>
+    </ion-content>
+</ion-view>

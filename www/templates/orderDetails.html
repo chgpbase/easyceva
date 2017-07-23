@@ -1,0 +1,16 @@
+<ion-view title="" id="page5" class="">
+  <ion-content padding="true" class="has-header">
+    <div class="list card">
+      <div class="item item-avatar">
+        <!--<angular-barcode ng-model="1234567890128" bc-options="bc" bc-class="barcode" bc-type="svg"></angular-barcode>-->
+        <h2>{{order.barcode}}</h2>
+        <p><i class="ion-calendar"></i> {{order.date}}</p>
+        <p><i class="ion-cash"></i> R$ {{order.price}}</p>
+      </div>
+
+      <div class="item item-body">
+        <p>{{order.description}}</p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
