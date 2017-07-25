@@ -68,16 +68,20 @@ angular.module('app.controllers', [])
   };
 })
 
-.controller('buyTicketCtrl', function($scope, $state) {
+.controller('buyTicketCtrl', function($scope, $state, BarcodeService) {
+ 
   //$scope.orders = Orders;
   //$scope.getDatetime = new Date();
   var ref = new Firebase("https://easyceva.firebaseio.com/orders");
+
   // this new, empty ref only exists locally
   var newChildRef = ref.push();
   // we can get its id using key()
 
-  var barcodeRandom = (Math.floor(Math.random() * 2000000) * Math.floor(Math.random() * 2000000)) + Math.floor(Math.random() * 50);
-  
+  //var barcodeRandom = (Math.floor(Math.random() * 2000000) * Math.floor(Math.random() * 2000000)) + Math.floor(Math.random() * 50);
+  BarcodeService.setBarcode();
+  var barcodeRandom = BarcodeService.getBarcode();
+
   // ####### MONTA DATA #########
   today = new Date();
   var month = ((today.getMonth() + 1) > 9)?(today.getMonth()+1).toString():"0"+(today.getMonth()+1);
@@ -87,6 +91,7 @@ angular.module('app.controllers', [])
   // ############################
 
   newChildRef.key();
+  
   // now it is appended at the end of data at the server
   newChildRef.set({
     "barcode" : barcodeRandom,
@@ -96,4 +101,60 @@ angular.module('app.controllers', [])
     "used" : 0,
     "user" : "teste"
   });
+
+  $state.go('tabsController.orders');
+  
 })
+
+
+
+.controller('barcodeCtrl', ['$scope', 'BarcodeService', function ($scope, BarcodeService) {
+    $scope.$watch('bc', function () {
+        for (var key in $scope.bc) {
+            if ($scope.bc.hasOwnProperty(key)) {
+                switch (typeof $scope.bc[key]) {
+                    case 'number':
+                        if ($scope.bc[key] === null) {
+                            delete $scope.bc[key];
+                        }
+                        break;
+                    case 'string':
+                        if ($scope.bc[key].length === 0) {
+                            delete $scope.bc[key];
+                        }
+                        break;
+                    case 'boolean':
+                        break;
+                }
+            }
+        }
+    }, true);
+    $scope.bc = {
+        format: 'CODE128',
+        lineColor: '#000000',
+        width: 2,
+        height: 100,
+        displayValue: true,
+        fontOptions: '',
+        font: 'monospace',
+        textAlign: 'center',
+        textPosition: 'bottom',
+        textMargin: 2,
+        fontSize: 20,
+        background: '#ffffff',
+        margin: 0,
+        marginTop: undefined,
+        marginBottom: undefined,
+        marginLeft: undefined,
+        marginRight: undefined,
+        valid: function (valid) {
+        }
+    };
+
+    //var barcodeRandom2 = (Math.floor(Math.random() * 2000000) * Math.floor(Math.random() * 2000000)) + Math.floor(Math.random() * 50);
+    $scope.txt = BarcodeService.getBarcode();
+}
+])
+     
+
+

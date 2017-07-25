@@ -55,12 +55,15 @@ angular.module('app.routes', ['ionicUIRouter'])
   })
 
   .state('tabsController.buyTicket', {
-    url: '/orders',
+    url: '/buy',
+    //url:'/barcode',
     views: {
-      'tab3': {
-        templateUrl: 'templates/orders.html',
-        controller: 'orderDetailsCtrl',
+      'tab4': {
+        templateUrl: 'templates/buy.html',
+        //templateUrl: 'templates/barcode.html',
+        //controller: 'orderDetailsCtrl',
         controller: 'buyTicketCtrl'
+        //controller: 'barcodeCtrl'
       }
     }
   })

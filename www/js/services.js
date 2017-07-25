@@ -19,7 +19,17 @@ angular.module('app.services', ['firebase'])
 
 }])
 
-.service('BlankService', [function(){
+.service('BarcodeService', [function(){
+	var myBarcode;
 
+	return {
+		setBarcode: function () {
+			myBarcode = (Math.floor(Math.random() * 2000000) * Math.floor(Math.random() * 2000000)) + Math.floor(Math.random() * 50);
+		},
+		getBarcode: function () {
+			return myBarcode;
+		}
+
+	}
 }]);
 

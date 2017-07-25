@@ -7,7 +7,9 @@
 // 'starter.controllers' is found in controllers.js
 // Ionic Starter App
 
-angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.routes', 'app.services', 'app.directives'])
+//angular.module('app', ['angular-barcode'])
+
+angular.module('app', ['ionic', 'ngCordova', 'angular-barcode', 'app.controllers', 'app.routes', 'app.services', 'app.directives'])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
